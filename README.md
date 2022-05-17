@@ -1,7 +1,5 @@
 # syncers_fps
-Last updated: 5/17/22
-
-See Notion for latest information
+Last updated 5/17/22; see Notion for latest information
 
 ## Summary:
 - a multiplayer FPS built in Unity
