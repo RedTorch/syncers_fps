@@ -4,7 +4,7 @@ Last updated 5/17/22; see Notion for latest information
 ## Summary:
 - a multiplayer FPS built in Unity
 ## Team:
-- Sou Nakamura
+- So Nakamura
 - Kenta Medina
 ## Technologies/ libraries used:
 - Unity (C#)
