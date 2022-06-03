@@ -55,8 +55,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7444840202193619416}
   - component: {fileID: 7444840202193619417}
-  - component: {fileID: 7444840202193619423}
-  - component: {fileID: 3275304685673920671}
+  - component: {fileID: 4345211232230364034}
+  - component: {fileID: 8423164865502295176}
+  - component: {fileID: 7931047659186593711}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -103,10 +104,28 @@ MonoBehaviour:
     RawGuidValue: 1adb5f5ddf39f42349a37cb1f0e183ab
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 7444840202193619423}
-  - {fileID: 3275304685673920671}
+  - {fileID: 8423164865502295176}
+  - {fileID: 7931047659186593711}
   SimulationBehaviours: []
---- !u!114 &7444840202193619423
+--- !u!143 &4345211232230364034
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7444840202193619396}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8423164865502295176
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,13 +134,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7444840202193619396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1101589486, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Script: {fileID: 11500000, guid: 378411a89480da345945c2f888327a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  _interpolationTarget: {fileID: 7444840202279408603}
-  DetachInterpTarget: 0
-  SyncParent: 1
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 0}
   InterpolateErrorCorrection: 1
   InterpolatedErrorCorrectionSettings:
     MinRate: 3.3
@@ -133,26 +151,15 @@ MonoBehaviour:
     RotBlendStart: 0.1
     RotBlendEnd: 0.5
     RotTeleportRadians: 1.5
-  SyncScale: 0
-  Space: 0
-  _collider: {fileID: 7444840201921195529}
-  Config:
-    AllowedPenetration: 0.1
-    PenetrationCorrection: 0.5
-    BumpBehavior: 1
-    LayerMask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    TriggerInteraction: 0
-    AirControl: 0
-    Acceleration: 10
-    Braking: 10
-    BaseJumpImpulse: 5
-    MaxSpeed: 4
-    MaxSlope: 60
-    MaxSlopeSpeed: 5
-    _gravity: {x: 0, y: -9.81, z: 0}
---- !u!114 &3275304685673920671
+  gravity: -20
+  jumpImpulse: 8
+  acceleration: 10
+  braking: 10
+  maxSpeed: 2
+  rotationSpeed: 15
+  _IsGrounded: 0
+  _Velocity: {x: 0, y: 0, z: 0}
+--- !u!114 &7931047659186593711
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
