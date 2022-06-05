@@ -9,6 +9,7 @@ public class RayCaster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // カーソルを中央に固定
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -21,7 +22,7 @@ public class RayCaster : MonoBehaviour
         }
     }
 
-    void Shot() 
+    void Shot()
     {
         int distance = 100;
         Vector3 center = new Vector3(Screen.width/2, Screen.height/2, 0);
@@ -30,7 +31,7 @@ public class RayCaster : MonoBehaviour
 
         if (Physics.Raycast(ray, out hitInfo, distance))
         {
-            Debug.Log("オブジェクトにぶつかりました。");
+            Debug.Log("オブジェクトに当たりました。");
             Destroy(hitInfo.collider.gameObject);
         }
     }
