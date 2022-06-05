@@ -55,9 +55,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7444840202193619416}
   - component: {fileID: 7444840202193619417}
+  - component: {fileID: 7931047659186593711}
   - component: {fileID: 4345211232230364034}
   - component: {fileID: 8423164865502295176}
-  - component: {fileID: 7931047659186593711}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -104,9 +104,22 @@ MonoBehaviour:
     RawGuidValue: 1adb5f5ddf39f42349a37cb1f0e183ab
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 8423164865502295176}
   - {fileID: 7931047659186593711}
+  - {fileID: 8423164865502295176}
   SimulationBehaviours: []
+--- !u!114 &7931047659186593711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7444840202193619396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d0a893f33844044aff35958c2f4902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
 --- !u!143 &4345211232230364034
 CharacterController:
   m_ObjectHideFlags: 0
@@ -118,11 +131,11 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
+  m_Height: 1
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.01
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8423164865502295176
@@ -152,26 +165,13 @@ MonoBehaviour:
     RotBlendEnd: 0.5
     RotTeleportRadians: 1.5
   gravity: -20
-  jumpImpulse: 8
+  jumpImpulse: 5
   acceleration: 10
   braking: 10
-  maxSpeed: 2
+  maxSpeed: 4
   rotationSpeed: 15
   _IsGrounded: 0
   _Velocity: {x: 0, y: 0, z: 0}
---- !u!114 &7931047659186593711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7444840202193619396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50d0a893f33844044aff35958c2f4902, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
 --- !u!1 &7444840202279408580
 GameObject:
   m_ObjectHideFlags: 0
