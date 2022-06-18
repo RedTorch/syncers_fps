@@ -109,7 +109,7 @@ public class NetworkCharacterControllerPrototype : NetworkTransform {
       horizontalVel      = Vector3.ClampMagnitude(horizontalVel + direction * acceleration * deltaTime, maxSpeed);
       transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Runner.DeltaTime);
     }
-
+    
     moveVelocity.x = horizontalVel.x;
     moveVelocity.z = horizontalVel.z;
 
