@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMotor_Net : MonoBehaviour
 {
     private NetworkCharacterControllerPrototype controller;
-    private CharacterController controllerCharacter;
     private Vector3 playerVelocity;
     public float speed = 5f;
 
@@ -17,22 +16,25 @@ public class PlayerMotor_Net : MonoBehaviour
     void Start()
     {
         controller = GetComponent<NetworkCharacterControllerPrototype>();
-        controllerCharacter = GetComponent<CharacterController>();
+        if (controller == null)
+        {
+            Debug.LogError("No NetworkCharacterControllerPrototype component found.");  
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        isGrounded = controllerCharacter.isGrounded;
+        // nothing here!
     }
 
     public void ProcessMove(Vector2 input) 
     {
-        Vector3 moveDirection = Vector3.zero;
+        Vector3 moveDirection = new Vector3(0,0,0);
         moveDirection.x = input.x;
         moveDirection.z = input.y;
 
-        controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+        controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime); //error
         
         playerVelocity.y += gravity * Time.deltaTime;
         if (isGrounded && playerVelocity.y < 0) {
@@ -44,9 +46,6 @@ public class PlayerMotor_Net : MonoBehaviour
 
     public void Jump()
     {
-        if (isGrounded)
-        {
-            playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
-        }
+        controller.Jump();
     }
 }

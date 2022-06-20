@@ -9,8 +9,8 @@ public class InputManager : MonoBehaviour
     private PlayerInput.OnFootActions onFoot;
 
 
-    private PlayerMotor motor;
-    private PlayerLook look;
+    private PlayerMotor_Net motor;
+    private PlayerLook_Net look;
 
     // Start is called before the first frame update
     void Awake()
@@ -20,8 +20,8 @@ public class InputManager : MonoBehaviour
         playerInput = new PlayerInput();
         onFoot = playerInput.OnFoot;
 
-        motor = GetComponent<PlayerMotor>();
-        look = GetComponent<PlayerLook>();
+        motor = GetComponent<PlayerMotor_Net>();
+        look = GetComponent<PlayerLook_Net>();
 
         onFoot.Jump.performed += ctx => motor.Jump();
     }
