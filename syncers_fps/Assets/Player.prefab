@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 8983049772713304330}
   - component: {fileID: 7178173141863721435}
   - component: {fileID: -5684414988104894039}
-  - component: {fileID: 5929961407065029206}
   - component: {fileID: 6771509663393522646}
   - component: {fileID: 892193537888908252}
+  - component: {fileID: 2893278768676952554}
+  - component: {fileID: -8107680715458431526}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -131,6 +132,7 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: -5684414988104894039}
+  - {fileID: 2893278768676952554}
   SimulationBehaviours: []
 --- !u!114 &-5684414988104894039
 MonoBehaviour:
@@ -166,20 +168,6 @@ MonoBehaviour:
   rotationSpeed: 15
   _IsGrounded: 0
   _Velocity: {x: 0, y: 0, z: 0}
---- !u!114 &5929961407065029206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8983049772713304322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e1e863b98ad54df79911fc96cbd7fec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  move: {x: 0, y: 0}
-  look: {x: 0, y: 0}
 --- !u!114 &6771509663393522646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +198,38 @@ MonoBehaviour:
   speed: 5
   gravity: -9.8
   jumpHeight: 3
+--- !u!114 &2893278768676952554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8983049772713304322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfaf4922a41594677a4f1b548d0aaa9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+--- !u!1818360609 &-8107680715458431526
+RotationConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8983049772713304322}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_AffectRotationX: 1
+  m_AffectRotationY: 0
+  m_AffectRotationZ: 1
+  m_IsContraintActive: 0
+  m_IsLocked: 0
+  m_Sources:
+  - sourceTransform: {fileID: 0}
+    weight: 1
 --- !u!1 &8983049774371683813
 GameObject:
   m_ObjectHideFlags: 0

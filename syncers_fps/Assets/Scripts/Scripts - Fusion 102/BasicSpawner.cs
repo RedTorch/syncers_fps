@@ -47,6 +47,7 @@ namespace Fusion102
 
 		public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
 		{
+			print("OnPlayerJoined was called");
 			if (runner.IsServer)
 			{
 				Vector3 spawnPosition = new Vector3((player.RawEncoded%runner.Config.Simulation.DefaultPlayers)*3,2,0);
@@ -66,6 +67,8 @@ namespace Fusion102
 
 		public void OnInput(NetworkRunner runner, NetworkInput input)
 		{
+			print("OnInput is running");
+
 			var data = new NetworkInputData();
 
 			if (Input.GetKey(KeyCode.W))

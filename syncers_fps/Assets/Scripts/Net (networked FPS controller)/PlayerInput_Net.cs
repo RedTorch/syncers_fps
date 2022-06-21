@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Fusion;
 
+// an input receiver class attached to the basic spawner object in the scene
+// it is used by the 
+
 public class PlayerInput_Net : MonoBehaviour
 {
     private PlayerInput playerInput;
@@ -14,13 +17,12 @@ public class PlayerInput_Net : MonoBehaviour
 
     public object controlledObject;
 
-    private void Awake() {
+    private void Awake() { //running as expected
         playerInput = new PlayerInput();
         onFoot = playerInput.OnFoot;
-        print("PlayerInput_net is awake");
     }
 
-    public void Update() {
+    public void Update() { //move and look are being set properly
         move = onFoot.Movement.ReadValue<Vector2>();
         look = onFoot.Look.ReadValue<Vector2>();
     }
