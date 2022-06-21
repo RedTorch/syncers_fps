@@ -29,6 +29,10 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // checks if the current object is controllable by the local player (I think)
+        // if (!motor.Object.HasInputAuthority)
+        //     return;
+    
         // tell the PlayerMotor to move using the value from our movement action
         motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
     }
