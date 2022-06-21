@@ -64,7 +64,6 @@ public class BasicSpawner_Net : MonoBehaviour, INetworkRunnerCallbacks
 
 	public void OnInput(NetworkRunner runner, NetworkInput input)
 	{
-		print("OnInput was called");
 
 		var data = new NetworkInputData_Net();
 

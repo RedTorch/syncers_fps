@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Fusion;
 
 // an input receiver class attached to the basic spawner object in the scene
 // it is used by the 
@@ -23,7 +22,7 @@ public class PlayerInput_Net : MonoBehaviour
     }
 
     public void Update() { //move and look are being set properly
-        move = onFoot.Movement.ReadValue<Vector2>();
+        move = onFoot.Movement.ReadValue<Vector2>();  //error
         look = onFoot.Look.ReadValue<Vector2>();
     }
 
