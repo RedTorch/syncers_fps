@@ -2,7 +2,7 @@ using Fusion;
 
 namespace Fusion102
 {
-	public class Player : NetworkBehaviour
+	public class Player_Net : NetworkBehaviour
 	{
 		private NetworkCharacterControllerPrototype _cc;
 

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8983049772713304326}
   - component: {fileID: 8983049772713304321}
   - component: {fileID: 8983049772713304330}
-  - component: {fileID: 8983049772713304331}
   - component: {fileID: 7178173141863721435}
   - component: {fileID: -5684414988104894039}
   - component: {fileID: 5929961407065029206}
@@ -109,21 +108,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8983049772713304331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8983049772713304322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd010b401bd9d416eb974ee72137500b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 8983049774371683819}
-  xSensitivity: 30
-  ySensitivity: 30
 --- !u!114 &7178173141863721435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,12 +175,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8983049772713304322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5852d3a8d7c46462eb797a8d9c7c8679, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e1e863b98ad54df79911fc96cbd7fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  gravity: -9.8
-  jumpHeight: 3
+  move: {x: 0, y: 0}
+  look: {x: 0, y: 0}
 --- !u!114 &6771509663393522646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,9 +189,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8983049772713304322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f27b57a3647f4d7683323cb8db12b41, type: 3}
+  m_Script: {fileID: 11500000, guid: c61a12769a43d47b9b16860fde5ddd36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 8983049774371683819}
+  xSensitivity: 30
+  ySensitivity: 30
 --- !u!114 &892193537888908252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,12 +204,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8983049772713304322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed25ac84059874da5b0ac285ad437fb5, type: 3}
+  m_Script: {fileID: 11500000, guid: 09b96669c1cda4626a38df054b3ea37b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 8983049774371683819}
-  xSensitivity: 30
-  ySensitivity: 30
+  speed: 5
+  gravity: -9.8
+  jumpHeight: 3
 --- !u!1 &8983049774371683813
 GameObject:
   m_ObjectHideFlags: 0

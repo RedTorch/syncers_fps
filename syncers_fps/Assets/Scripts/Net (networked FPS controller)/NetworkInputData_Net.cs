@@ -1,10 +1,8 @@
 using Fusion;
 using UnityEngine;
 
-namespace Fusion102
+public struct NetworkInputData_Net: INetworkInput
 {
-	public struct NetworkInputData : INetworkInput
-	{
-		public Vector3 direction;
-	}
+	public Vector2 move;
+	public Vector2 look;
 }

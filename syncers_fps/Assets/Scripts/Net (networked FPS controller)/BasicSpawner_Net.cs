@@ -66,25 +66,26 @@ namespace Fusion102
 
 		public void OnInput(NetworkRunner runner, NetworkInput input)
 		{
-			var data = new NetworkInputData();
+			var data = new NetworkInputData_Net();
 
 			if (Input.GetKey(KeyCode.W))
-				data.direction += Vector3.forward;
+				data.move += Vector2.up;
 
 			if (Input.GetKey(KeyCode.S))
-				data.direction += Vector3.back;
+				data.move += Vector2.down;
 
 			if (Input.GetKey(KeyCode.A))
-				data.direction += Vector3.left;
+				data.move += Vector2.left;
 
 			if (Input.GetKey(KeyCode.D))
-				data.direction += Vector3.right;
+				data.move += Vector2.right;
+
+			// data.move = gameObject.GetComponent<PlayerInput_Net>().move;
+			data.look = gameObject.GetComponent<PlayerInput_Net>().look;
+
+			print("input taken");
 			
 			input.Set(data);
-		}
-
-		public void Update() {
-			// starting here
 		}
 		
 		public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input) { }
