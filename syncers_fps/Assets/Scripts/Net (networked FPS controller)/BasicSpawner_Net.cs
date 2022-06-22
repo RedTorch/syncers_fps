@@ -81,7 +81,10 @@ public class BasicSpawner_Net : MonoBehaviour, INetworkRunnerCallbacks
 
 		data.move = gameObject.GetComponent<PlayerInput_Net>().move;
 		data.look = gameObject.GetComponent<PlayerInput_Net>().look;
-		data.isJumping = gameObject.GetComponent<PlayerInput_Net>().isJumping;
+		data.jump = gameObject.GetComponent<PlayerInput_Net>().jump;
+		data.fire = gameObject.GetComponent<PlayerInput_Net>().fire;
+		data.reload = gameObject.GetComponent<PlayerInput_Net>().reload;
+		data.ability1 = gameObject.GetComponent<PlayerInput_Net>().ability1;
 
 		print("input taken");
 		

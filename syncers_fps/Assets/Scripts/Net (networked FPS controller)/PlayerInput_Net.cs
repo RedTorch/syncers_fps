@@ -5,7 +5,9 @@ using UnityEngine.InputSystem;
 
 // an input receiver class attached to the basic spawner object in the scene
 // it is used by BasicSpawner_Net which reads the data in OnInput()
-// we could probably combine this script with BasicSpawner entirely, but for organization we separate these scripts.
+// we could probably combine this script with BasicSpawner entirely, but we separate these scripts to keep things clean.
+
+// these docs are useful reference: https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/api/UnityEngine.InputSystem.PlayerInput.html
 
 public class PlayerInput_Net : MonoBehaviour
 {
@@ -14,7 +16,10 @@ public class PlayerInput_Net : MonoBehaviour
 
     public Vector2 move;
     public Vector2 look;
-    public bool isJumping;
+    public bool jump;
+    public bool fire;
+    public bool reload;
+    public bool ability1;
 
     public object controlledObject;
 
@@ -26,7 +31,10 @@ public class PlayerInput_Net : MonoBehaviour
     public void Update() {
         move = onFoot.Movement.ReadValue<Vector2>();
         look = onFoot.Look.ReadValue<Vector2>();
-        isJumping = onFoot.Jump.triggered;
+        jump = onFoot.Jump.triggered;
+        fire = onFoot.Fire.triggered;
+        reload = onFoot.Reload.triggered;
+        ability1 = onFoot.Ability1.triggered;
     }
 
     private void OnEnable()

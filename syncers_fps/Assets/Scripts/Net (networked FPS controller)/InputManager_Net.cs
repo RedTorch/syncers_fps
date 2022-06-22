@@ -41,9 +41,22 @@ public class InputManager_Net : NetworkBehaviour
             moveVector.Normalize();
             controller.Move(moveVector);
             ProcessLook(data.look);
-            if(data.isJumping)
+            if(data.jump)
             {
                 controller.Jump();
+            }
+            if(data.fire)
+            {
+                // fire weapon! account for cooldown
+                print("firing...");
+            }
+            if(data.reload)
+            {
+                // reloads current weapon (assuming it's a normal magazine-based gun; if it recharges over time, this is not needed)
+            }
+            if(data.ability1)
+            {
+                // uses ability #1; add ability2, ability3, etc.. as needed
             }
         }
         else
