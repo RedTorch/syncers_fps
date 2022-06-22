@@ -13,9 +13,6 @@ GameObject:
   - component: {fileID: 3435009162076761264}
   - component: {fileID: 3435009162076761275}
   - component: {fileID: 3435009162076761255}
-  - component: {fileID: 3435009162076761254}
-  - component: {fileID: 3435009162076761273}
-  - component: {fileID: 3435009162076761272}
   - component: {fileID: 5432110271454774604}
   m_Layer: 0
   m_Name: PlayerNetworked
@@ -134,48 +131,6 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 5432110271454774604}
   SimulationBehaviours: []
---- !u!114 &3435009162076761254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3435009162076761267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f27b57a3647f4d7683323cb8db12b41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3435009162076761273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3435009162076761267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed25ac84059874da5b0ac285ad437fb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 3435009162833391706}
-  xSensitivity: 30
-  ySensitivity: 30
---- !u!114 &3435009162076761272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3435009162076761267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5852d3a8d7c46462eb797a8d9c7c8679, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  gravity: -9.8
-  jumpHeight: 3
 --- !u!114 &5432110271454774604
 MonoBehaviour:
   m_ObjectHideFlags: 0

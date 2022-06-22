@@ -6,7 +6,7 @@ using Fusion;
 
 public class InputManager_Net : NetworkBehaviour
 {
-    private PlayerMotor_Net motor;
+    // private PlayerMotor_Net motor;
     private PlayerLook_Net look;
 
     private NetworkCharacterControllerPrototype controller;
@@ -15,7 +15,7 @@ public class InputManager_Net : NetworkBehaviour
     void Awake()
     {
         Cursor.visible = false;
-        motor = GetComponent<PlayerMotor_Net>();
+        // motor = GetComponent<PlayerMotor_Net>();
         look = GetComponent<PlayerLook_Net>();
 
         controller = GetComponent<NetworkCharacterControllerPrototype>();
@@ -36,10 +36,13 @@ public class InputManager_Net : NetworkBehaviour
         // tell the PlayerMotor to move using the value from our movement action
         if (GetInput(out NetworkInputData_Net data))
         {
-            Vector2 input = data.move.normalized;
+            Vector2 input = data.move;
             if(input.magnitude != 0)
             {
-                controller.Move(transform.TransformDirection(new Vector3(input.x,0,input.y))*1f);
+                Vector3 moveVector = transform.forward*input.y + transform.right*input.x;
+                moveVector.Normalize();
+                // controller.Move(transform.TransformDirection(new Vector3(input.x,0,input.y))*1f); //this is a little problematic
+                controller.Move(moveVector); //this is a little problematic
             }
             look.ProcessLook(data.look);
         }
