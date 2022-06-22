@@ -7,18 +7,24 @@ using Fusion;
 public class InputManager_Net : NetworkBehaviour
 {
     // private PlayerMotor_Net motor;
-    private PlayerLook_Net look;
+    // private PlayerLook_Net look;
 
-    private NetworkCharacterControllerPrototype controller;
+    private NetworkCharacterControllerPrototypeCustom controller;
+
+    public Camera cam;
+    private float xRotation = 0f;
+
+    public float xSensitivity = 30f;
+    public float ySensitivity = 30f;
 
     // Start is called before the first frame update
     void Awake()
     {
         Cursor.visible = false;
         // motor = GetComponent<PlayerMotor_Net>();
-        look = GetComponent<PlayerLook_Net>();
+        // look = GetComponent<PlayerLook_Net>();
 
-        controller = GetComponent<NetworkCharacterControllerPrototype>();
+        controller = GetComponent<NetworkCharacterControllerPrototypeCustom>();
         if (controller == null)
         {
             Debug.LogError("No NetworkCharacterControllerPrototype component found.");  
@@ -37,19 +43,32 @@ public class InputManager_Net : NetworkBehaviour
         if (GetInput(out NetworkInputData_Net data))
         {
             Vector2 input = data.move;
-            if(input.magnitude != 0)
-            {
-                Vector3 moveVector = transform.forward*input.y + transform.right*input.x;
-                moveVector.Normalize();
-                // controller.Move(transform.TransformDirection(new Vector3(input.x,0,input.y))*1f); //this is a little problematic
-                controller.Move(moveVector); //this is a little problematic
-            }
-            look.ProcessLook(data.look);
+            Vector3 moveVector = transform.forward*input.y + transform.right*input.x;
+            moveVector.Normalize();
+            // controller.Move(transform.TransformDirection(new Vector3(input.x,0,input.y))*1f); //this is a little problematic
+            controller.Move(moveVector); //this is a little problematic
+            //look.ProcessLook(data.look);
+            ProcessLook(data.look);
         }
         else
         {
             print("GetInput not executed");
         }
+    }
+
+    public void ProcessLook(Vector2 input) 
+    {
+        float mouseX = input.x;
+        float mouseY = input.y;
+
+        //calculate camera rotation for looking up and down
+        xRotation -= (mouseY * Time.deltaTime) * ySensitivity;
+        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+        // apply the above to camera transform
+        cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+        // rotate player to look left and right
+        // transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSensitivity);
+        controller.Rotate((mouseX * Time.deltaTime) * xSensitivity);
     }
 
     private void LateUpdate() 
