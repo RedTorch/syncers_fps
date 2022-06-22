@@ -6,8 +6,6 @@ using Fusion;
 
 public class InputManager_Net : NetworkBehaviour
 {
-    // private PlayerMotor_Net motor;
-    // private PlayerLook_Net look;
 
     private NetworkCharacterControllerPrototypeCustom controller;
 
@@ -21,8 +19,6 @@ public class InputManager_Net : NetworkBehaviour
     void Awake()
     {
         Cursor.visible = false;
-        // motor = GetComponent<PlayerMotor_Net>();
-        // look = GetComponent<PlayerLook_Net>();
 
         controller = GetComponent<NetworkCharacterControllerPrototypeCustom>();
         if (controller == null)
@@ -36,8 +32,6 @@ public class InputManager_Net : NetworkBehaviour
     // Update is called once per frame
     public override void FixedUpdateNetwork()
     {
-        // motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
-        // look.ProcessLook(onFoot.Look.ReadValue<Vector2>());
 
         // tell the PlayerMotor to move using the value from our movement action
         if (GetInput(out NetworkInputData_Net data))
@@ -45,10 +39,12 @@ public class InputManager_Net : NetworkBehaviour
             Vector2 input = data.move;
             Vector3 moveVector = transform.forward*input.y + transform.right*input.x;
             moveVector.Normalize();
-            // controller.Move(transform.TransformDirection(new Vector3(input.x,0,input.y))*1f); //this is a little problematic
-            controller.Move(moveVector); //this is a little problematic
-            //look.ProcessLook(data.look);
+            controller.Move(moveVector);
             ProcessLook(data.look);
+            if(data.isJumping)
+            {
+                controller.Jump();
+            }
         }
         else
         {
