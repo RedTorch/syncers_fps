@@ -45,7 +45,7 @@ public class InputManager_Net : NetworkBehaviour
             {
                 controller.Jump();
             }
-            if(data.fire)
+            if(data.fire>0.1f)
             {
                 // fire weapon! account for cooldown
                 print("firing...");

@@ -6,7 +6,7 @@ public struct NetworkInputData_Net: INetworkInput
 	public Vector2 move;
 	public Vector2 look;
 	public bool jump;
-    public bool fire;
+    public float fire;
     public bool reload;
     public bool ability1;
 }
