@@ -50,6 +50,11 @@ public class BasicSpawner_Net : MonoBehaviour, INetworkRunnerCallbacks
 			Vector3 spawnPosition = new Vector3((player.RawEncoded%runner.Config.Simulation.DefaultPlayers)*3,2,0);
 			NetworkObject networkPlayerObject = runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
 			_spawnedCharacters.Add(player, networkPlayerObject);
+			// basically, if player ID of new object and local player does not match, disable cam
+			if(player != runner.LocalPlayer)
+			{
+				_spawnedCharacters[player].GetComponent<InputManager_Net>().cam.enabled = false;
+			}
 		}
 	}
 
