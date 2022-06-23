@@ -55,6 +55,7 @@ public class BasicSpawner_Net : MonoBehaviour, INetworkRunnerCallbacks
 			{
 				_spawnedCharacters[player].GetComponent<InputManager_Net>().cam.enabled = false;
 			}
+			networkPlayerObject.GetComponent<InputManager_Net>().playerReference=player;
 		}
 	}
 
@@ -90,8 +91,11 @@ public class BasicSpawner_Net : MonoBehaviour, INetworkRunnerCallbacks
 		data.fire = gameObject.GetComponent<PlayerInput_Net>().fire;
 		data.reload = gameObject.GetComponent<PlayerInput_Net>().reload;
 		data.ability1 = gameObject.GetComponent<PlayerInput_Net>().ability1;
+		data.callingPlayer = runner.LocalPlayer;
 
 		print("input taken");
+
+		// _spawnedCharacters[runner.LocalPlayer].GetComponent<InputManager_Net>().MoveChar(data);
 		
 		input.Set(data);
 	}

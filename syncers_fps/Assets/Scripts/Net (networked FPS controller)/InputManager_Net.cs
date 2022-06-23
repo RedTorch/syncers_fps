@@ -15,6 +15,8 @@ public class InputManager_Net : NetworkBehaviour
     public float xSensitivity = 30f;
     public float ySensitivity = 30f;
 
+    public PlayerRef playerReference;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -29,39 +31,38 @@ public class InputManager_Net : NetworkBehaviour
         // onFoot.Jump.performed += (ctx => motor.Jump());
     }
 
-    // Update is called once per frame
     public override void FixedUpdateNetwork()
     {
-
-        // tell the PlayerMotor to move using the value from our movement action
         if (GetInput(out NetworkInputData_Net data))
         {
-            Vector2 input = data.move;
-            Vector3 moveVector = transform.forward*input.y + transform.right*input.x;
-            moveVector.Normalize();
-            controller.Move(moveVector);
-            ProcessLook(data.look);
-            if(data.jump)
-            {
-                controller.Jump();
-            }
-            if(data.fire>0.1f)
-            {
-                // fire weapon! account for cooldown
-                print("firing...");
-            }
-            if(data.reload)
-            {
-                // reloads current weapon (assuming it's a normal magazine-based gun; if it recharges over time, this is not needed)
-            }
-            if(data.ability1)
-            {
-                // uses ability #1; add ability2, ability3, etc.. as needed
-            }
+            // if(data.callingPlayer != playerReference) MoveChar(data);
+            MoveChar(data);
         }
-        else
+    }
+
+    public void MoveChar(NetworkInputData_Net data)
+    {
+        Vector2 input = data.move;
+        Vector3 moveVector = transform.forward*input.y + transform.right*input.x;
+        moveVector.Normalize();
+        controller.Move(moveVector);
+        ProcessLook(data.look);
+        if(data.jump)
         {
-            print("GetInput not executed");
+            controller.Jump();
+        }
+        if(data.fire>0.1f)
+        {
+            // fire weapon! account for cooldown
+            print("firing...");
+        }
+        if(data.reload)
+        {
+            // reloads current weapon (assuming it's a normal magazine-based gun; if it recharges over time, this is not needed)
+        }
+        if(data.ability1)
+        {
+            // uses ability #1; add ability2, ability3, etc.. as needed
         }
     }
 

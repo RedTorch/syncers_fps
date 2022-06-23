@@ -9,4 +9,5 @@ public struct NetworkInputData_Net: INetworkInput
     public float fire;
     public bool reload;
     public bool ability1;
+    public PlayerRef callingPlayer; // the PlayerRef of the player that sent this data
 }
