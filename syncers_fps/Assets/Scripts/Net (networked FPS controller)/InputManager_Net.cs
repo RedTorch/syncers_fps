@@ -1,3 +1,10 @@
+// Reference:
+// https://doc.photonengine.com/en-us/fusion/current/fusion-100/fusion-103
+// https://doc-api.photonengine.com/en/fusion/current/class_fusion_1_1_network_behaviour.html#a1d45dad0ae1a816ae0aa02db93aa2457
+// PUN 2: https://doc.photonengine.com/en-us/pun/current/demos-and-tutorials/pun-basics-tutorial/player-networking
+
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
