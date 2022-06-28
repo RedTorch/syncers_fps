@@ -17,7 +17,8 @@ public class PlayerInput_Net : MonoBehaviour
     public Vector2 move;
     public Vector2 look;
     public bool jump;
-    public float fire;
+    public bool jump2;
+    public bool fire;
     public bool reload;
     public bool ability1;
 
@@ -32,7 +33,10 @@ public class PlayerInput_Net : MonoBehaviour
         move = onFoot.Movement.ReadValue<Vector2>();
         look = onFoot.Look.ReadValue<Vector2>();
         jump = onFoot.Jump.triggered;
-        fire = onFoot.Fire.ReadValue<float>();
+        jump2 = (float)(onFoot.Jump2.ReadValue<float>()) > 0.1f;
+        print(onFoot.Jump2.ReadValue<float>());
+        print(jump2);
+        fire = onFoot.Fire.ReadValue<float>() > 0.1f;
         reload = onFoot.Reload.triggered;
         ability1 = onFoot.Ability1.triggered;
     }

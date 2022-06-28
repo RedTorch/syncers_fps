@@ -42,6 +42,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Jump2",
+                    "type": "PassThrough",
+                    "id": "3ea805d7-8412-4b5b-9656-2f02d3528322",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Fire",
                     "type": "PassThrough",
                     "id": "00ec290f-368f-4c2b-b505-9cc54bf70365",
@@ -254,6 +263,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "38179a54-2f63-46c7-8bea-6dcc7e4a1e7d",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3ef2b811-3bde-44c6-bf87-f55087666b32",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

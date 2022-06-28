@@ -303,13 +303,15 @@ MonoBehaviour:
     RotBlendStart: 0.1
     RotBlendEnd: 0.5
     RotTeleportRadians: 1.5
-  gravity: -20
-  jumpImpulse: 8
-  acceleration: 10
-  braking: 10
-  maxSpeed: 2
-  rotationSpeed: 15
+  gravity: -90
+  gravityFloatJump: -30
+  jumpImpulse: 25
+  acceleration: 30
+  braking: 30
+  maxSpeed: 10
+  rotationSpeed: 20
   viewUpDownRotationSpeed: 50
+  _isFloatJump: 0
   _IsGrounded: 0
   _Velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &8983049774371683813

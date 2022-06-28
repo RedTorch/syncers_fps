@@ -8,13 +8,18 @@ using UnityEngine;
 // ReSharper disable once CheckNamespace
 public class NetworkCharacterControllerPrototypeCustom : NetworkTransform {
   [Header("Character Controller Settings")]
-  public float gravity       = -20.0f;
+  public float gravity       = -40.0f;
+  public float gravityFloatJump = -20f;
   public float jumpImpulse   = 8.0f;
   public float acceleration  = 10.0f;
   public float braking       = 10.0f;
   public float maxSpeed      = 2.0f;
   public float rotationSpeed = 15.0f;
   public float viewUpDownRotationSpeed = 50.0f;
+
+  [Networked]
+  [HideInInspector]
+  public bool isFloatJump { get; set; }
 
   [Networked]
   [HideInInspector]
@@ -77,6 +82,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform {
   /// </summary>
   public virtual void Jump(bool ignoreGrounded = false, float? overrideImpulse = null) {
     if (IsGrounded || ignoreGrounded) {
+      isFloatJump = true;
       var newVel = Velocity;
       newVel.y += overrideImpulse ?? jumpImpulse;
       Velocity =  newVel;
@@ -98,7 +104,17 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform {
       moveVelocity.y = 0f;
     }
 
-    moveVelocity.y += gravity * Runner.DeltaTime;
+    // moveVelocity.y += gravity * Runner.DeltaTime;
+
+    // CODE FOR FLOAT JUMP
+    if(isFloatJump)
+    {
+      moveVelocity.y += gravityFloatJump * Runner.DeltaTime;
+    }
+    else
+    {
+      moveVelocity.y += gravity * Runner.DeltaTime;
+    }
 
     var horizontalVel = default(Vector3);
     horizontalVel.x = moveVelocity.x;

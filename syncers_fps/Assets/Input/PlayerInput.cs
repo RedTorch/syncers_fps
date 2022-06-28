@@ -64,6 +64,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Jump2"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""3ea805d7-8412-4b5b-9656-2f02d3528322"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Fire"",
                     ""type"": ""PassThrough"",
                     ""id"": ""00ec290f-368f-4c2b-b505-9cc54bf70365"",
@@ -278,6 +287,28 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""38179a54-2f63-46c7-8bea-6dcc7e4a1e7d"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ef2b811-3bde-44c6-bf87-f55087666b32"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -290,6 +321,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_LeftStick = m_OnFoot.FindAction("LeftStick", throwIfNotFound: true);
         m_OnFoot_Look = m_OnFoot.FindAction("Look", throwIfNotFound: true);
         m_OnFoot_Jump = m_OnFoot.FindAction("Jump", throwIfNotFound: true);
+        m_OnFoot_Jump2 = m_OnFoot.FindAction("Jump2", throwIfNotFound: true);
         m_OnFoot_Fire = m_OnFoot.FindAction("Fire", throwIfNotFound: true);
         m_OnFoot_Reload = m_OnFoot.FindAction("Reload", throwIfNotFound: true);
         m_OnFoot_Ability1 = m_OnFoot.FindAction("Ability1", throwIfNotFound: true);
@@ -356,6 +388,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_LeftStick;
     private readonly InputAction m_OnFoot_Look;
     private readonly InputAction m_OnFoot_Jump;
+    private readonly InputAction m_OnFoot_Jump2;
     private readonly InputAction m_OnFoot_Fire;
     private readonly InputAction m_OnFoot_Reload;
     private readonly InputAction m_OnFoot_Ability1;
@@ -367,6 +400,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @LeftStick => m_Wrapper.m_OnFoot_LeftStick;
         public InputAction @Look => m_Wrapper.m_OnFoot_Look;
         public InputAction @Jump => m_Wrapper.m_OnFoot_Jump;
+        public InputAction @Jump2 => m_Wrapper.m_OnFoot_Jump2;
         public InputAction @Fire => m_Wrapper.m_OnFoot_Fire;
         public InputAction @Reload => m_Wrapper.m_OnFoot_Reload;
         public InputAction @Ability1 => m_Wrapper.m_OnFoot_Ability1;
@@ -391,6 +425,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnJump;
+                @Jump2.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnJump2;
+                @Jump2.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnJump2;
+                @Jump2.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnJump2;
                 @Fire.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnFire;
@@ -416,6 +453,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Jump2.started += instance.OnJump2;
+                @Jump2.performed += instance.OnJump2;
+                @Jump2.canceled += instance.OnJump2;
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
@@ -435,6 +475,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnLeftStick(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnJump2(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnAbility1(InputAction.CallbackContext context);

@@ -58,7 +58,11 @@ public class InputManager_Net : NetworkBehaviour
         {
             controller.Jump();
         }
-        if(data.fire>0.1f)
+        if(data.jump2 == false)
+        {
+            controller.isFloatJump = false;
+        }
+        if(data.fire)
         {
             // fire weapon! account for cooldown
             print("firing...");
@@ -66,10 +70,12 @@ public class InputManager_Net : NetworkBehaviour
         if(data.reload)
         {
             // reloads current weapon (assuming it's a normal magazine-based gun; if it recharges over time, this is not needed)
+            print("reloading!");
         }
         if(data.ability1)
         {
             // uses ability #1; add ability2, ability3, etc.. as needed
+            print("ability1 used!");
         }
     }
 
