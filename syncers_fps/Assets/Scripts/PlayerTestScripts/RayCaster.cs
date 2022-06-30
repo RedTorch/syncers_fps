@@ -31,8 +31,11 @@ public class RayCaster : MonoBehaviour
 
         if (Physics.Raycast(ray, out hitInfo, distance))
         {
-            Debug.Log("オブジェクトに当たりました。");
-            Destroy(hitInfo.collider.gameObject);
+            if (hitInfo.collider.CompareTag("Enemy"))
+            {
+                Debug.Log("オブジェクトに当たりました。");
+                Destroy(hitInfo.collider.gameObject);
+            }
         }
     }
 }
