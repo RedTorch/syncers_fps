@@ -8,7 +8,10 @@ public class HomingBulletGenerator : MonoBehaviour
     Transform target;
 
     [SerializeField]
-    GameObject prefab;
+    GameObject missile;
+
+    [SerializeField]
+    GameObject cube;
 
     [SerializeField, Min(1)]
     int iterationCount = 3;
@@ -44,7 +47,8 @@ public class HomingBulletGenerator : MonoBehaviour
         HomingTest homing;
 
         for (int i = 0; i < iterationCount; i++){
-            homing = Instantiate(prefab, thisTransform.position, Quaternion.identity).GetComponent<HomingTest>();
+            homing = Instantiate(missile, thisTransform.position, Quaternion.identity).GetComponent<HomingTest>();
+            Instantiate(cube, thisTransform.position, Quaternion.identity);
             homing.Target = target;
         }
 
