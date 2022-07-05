@@ -44,26 +44,23 @@ public class HomingBulletGenerator : MonoBehaviour
 
         Vector3 euler;
         Quaternion rot;
-        HomingTest homing;
+        HomingScript homing;
 
-        for (int i = 0; i < iterationCount; i++){
-            homing = Instantiate(missile, thisTransform.position, Quaternion.identity).GetComponent<HomingTest>();
-            Instantiate(cube, thisTransform.position, thisTransform.rotation);
-            homing.Target = target;
-        }
+        // for (int i = 0; i < iterationCount; i++){
+        //     homing = Instantiate(missile, thisTransform.position, Quaternion.identity).GetComponent<HomingTest>();
+        //     Instantiate(cube, thisTransform.position, thisTransform.rotation);
+        //     homing.Target = target;
+        // }
 
-        // SpawnMissileSingle();
+        SpawnMissileSingle();
 
         yield return intervalWait;
         isSpawning = false;
     }
 
-    void SpawnMissileSingle(float xOffset, float yOffset, float zOffset)
+    void SpawnMissileSingle(float xOffset = 0f, float yOffset = 0f, float zOffset = 0f)
     {
-        Vector3 euler;
-        Quaternion rot;
-        HomingTest homing;
-        homing = Instantiate(missile, thisTransform.position + transform.right*xOffset + transform.up*yOffset + transform.forward*zOffset, Quaternion.identity).GetComponent<HomingTest>();
+        HomingScript homing = Instantiate(missile, thisTransform.position + transform.right*xOffset + transform.up*yOffset + transform.forward*zOffset, Quaternion.identity).GetComponent<HomingScript>();
         Instantiate(cube, thisTransform.position, Quaternion.identity);
         homing.Target = target;
     }
