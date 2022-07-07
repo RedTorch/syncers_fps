@@ -12,6 +12,9 @@ public sealed class HomingScript : MonoBehaviour
     float lifeTime = 2;
 
     [SerializeField]
+    float turnTime = 0.5f;
+
+    [SerializeField]
     bool limitAcceleration = false;
 
     [SerializeField, Min(0)]
@@ -28,7 +31,9 @@ public sealed class HomingScript : MonoBehaviour
     Vector3 acceleration;
     Transform thisTransform;
 
-    float turnSpeed = 20f;
+    private bool updateAccel = true;
+
+    float turnSpeed = 60f;
 
     public Transform Target
     {
@@ -48,11 +53,13 @@ public sealed class HomingScript : MonoBehaviour
         position = thisTransform.position;
         // 速度のベクトルを決定する
         velocity = new Vector3(Random.Range(minInitVelocity.x, maxInitVelocity.x), Random.Range(minInitVelocity.y, maxInitVelocity.y), Random.Range(minInitVelocity.z, maxInitVelocity.z));
+        // velocity = transform.forward * maxAcceleration;
+        // velocity = new Vector3(0f,0f,0f);
         StartCoroutine(nameof(Timer));
     }
     public void Update()
     {
-        oldMove();
+        move();
     }
 
     void newMove()
@@ -63,38 +70,12 @@ public sealed class HomingScript : MonoBehaviour
 
         Vector3 targetDirection = target.position - transform.position;
         float singleStep = turnSpeed * Time.deltaTime;
-        thisTransform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(thisTransform.forward, targetDirection, singleStep, 0.0f));
+        thisTransform.rotation = Quaternion.RotateTowards(thisTransform.rotation, Quaternion.LookRotation(targetDirection), singleStep);
 
         transform.Translate(transform.forward * 2f);
-
-        // acceleration = 2f / (time * time) * (target.position - position - time * velocity);
-
-
-
-        // acceleration = transform.forward * 5f;
-
-        // if (limitAcceleration && acceleration.sqrMagnitude > maxAcceleration * maxAcceleration)
-        // {
-        //     acceleration = acceleration.normalized * maxAcceleration;
-        // }
-
-        // time -= Time.deltaTime;
-
-        // if (time < 0f)
-        // {
-        //     return;
-        // }
-
-        // velocity += acceleration * Time.deltaTime;
-        // position += velocity * Time.deltaTime;
-        // thisTransform.position = position;
-
-
-
-        // thisTransform.rotation = Quaternion.LookRotation(velocity);
     }
 
-    void oldMove()
+    void move()
     {
         // ターゲットがいなければ処理終了
         if (target == null) {
@@ -102,16 +83,25 @@ public sealed class HomingScript : MonoBehaviour
         }
 
         // 加速度を算出
-        acceleration = 2f / (time * time) * (target.position - position - time * velocity);
-
-        // もし加速度制限がTrue 且つ 加速度の値が実際に超過していた場合 (大きさを比較するときsqrを使う方が計算が早い)
-        if (limitAcceleration && acceleration.sqrMagnitude > maxAcceleration * maxAcceleration)
+        if(updateAccel==true)
         {
-            // 正規化をしたaccelerationに最大値を掛ける
-            acceleration = acceleration.normalized * maxAcceleration;
+            acceleration = 2f / (time * time) * (target.position - position - time * velocity);
+
+            // もし加速度制限がTrue 且つ 加速度の値が実際に超過していた場合 (大きさを比較するときsqrを使う方が計算が早い)
+            if (limitAcceleration && acceleration.sqrMagnitude > maxAcceleration * maxAcceleration)
+            {
+                // 正規化をしたaccelerationに最大値を掛ける
+                acceleration = acceleration.normalized * maxAcceleration;
+            }
         }
 
         time -= Time.deltaTime;
+        turnTime -= Time.deltaTime;
+
+        if (turnTime < 0f)
+        {
+            updateAccel = false;
+        }
 
         // 命中するまでの時間が0になったら処理終了
         if (time < 0f)
@@ -127,6 +117,11 @@ public sealed class HomingScript : MonoBehaviour
         thisTransform.position = position;
         // rotationに速度のベクトルを代入する
         thisTransform.rotation = Quaternion.LookRotation(velocity);
+    }
+
+    Quaternion vToQ(Vector3 givenVector)
+    {
+        return Quaternion.Euler(givenVector.x, givenVector.y, givenVector.z);
     }
 
     IEnumerator Timer()
