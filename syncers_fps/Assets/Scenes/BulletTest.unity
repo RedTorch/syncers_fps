@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &20566705 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2591728208514599211, guid: 06a9312d08ad44ce3aaed9e4f9f71e42, type: 3}
+  m_PrefabInstance: {fileID: 1902204688}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &41394546
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,11 +230,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!4 &240962677 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8885342252235013208, guid: 588a134359f564ae6a2c98be154bb40a, type: 3}
-  m_PrefabInstance: {fileID: 414478560367476015}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &657814394
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f968caaea461a44beb523b3e5d57aea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 240962677}
+  target: {fileID: 20566705}
   missile: {fileID: 1618534582704266881, guid: 385e17b8954db43b28fead6725be7e9c, type: 3}
   cube: {fileID: 9169862104680960658, guid: 7cd7ebcd40a134b45b32d845a120221a, type: 3}
   iterationCount: 3
@@ -493,12 +493,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262485005}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.19999999, z: 5}
+  m_LocalPosition: {x: 5, y: 1.5, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 714471314}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1542031713
 GameObject:
